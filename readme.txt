@@ -1,2 +1,1 @@
-ssssskkkkkssss hello this is a readme
-This is my love on master.
+A website for user show there wedding photos on.
