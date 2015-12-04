@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, user-scalable=no">
+<title>WeChat JS</title>
+<script type="text/javascript" src="zepto.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<style type="text/css">
+html, body {
+	margin: 0;padding: 0;
+}
+div {
+	padding: 10px;
+	background-color: #CCC;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<div id="btnClick" onclick="scan()">
+Loading...
+</div>
+
+<script type="text/javascript">
+var getJsapiTicket = function(token) {
+	$.get('./curl_get_https.php?type=jsapi_ticket&token=' + token, function(res) {
+		var obj = JSON.parse(res);
+		if (obj.errcode === 0) {
+			var jsapiTicket = obj.ticket;
+			getSignature(jsapiTicket);
+		} else {
+			alert('get ticket faild');
+		}
+	});
+};
+
+var getSignature = function(ticket) {
+	$.get('./signature_ticket.php?jsapi_ticket=' + ticket, function(res) {
+		var signaturePackage = JSON.parse(res);
+		prepare(signaturePackage);
+	});
+};
+
+var prepare = function(pack) {
+	var config = {
+		debug: false, 
+	    appId: 'wx40c3a549a1f9df06',
+	    timestamp: pack.timestamp,
+	    nonceStr: pack.nonceStr,
+	    signature: pack.signature,
+	    jsApiList: ['scanQRCode']
+	};
+	wx.config(config);
+	wx.ready(function() {
+		$('#btnClick').html('Scan QRCode');
+	});
+	wx.error(function(err) {
+		alert('config faild');
+	});
+};
+
+var validateWechatJs = function() {
+	$.get('./curl_get_https.php?type=token', function(response){
+		var obj = JSON.parse(response); 
+		var token = obj.access_token;
+		getJsapiTicket(token);
+	});
+};
+
+validateWechatJs();
+
+function scan() {
+	wx.scanQRCode({
+	    needResult: 1,
+	    scanType: ["qrCode", "barCode"],
+	    success: function (res) {
+		    var result = res.resultStr; 
+		    alert(result);
+		}
+	});
+};
+</script>
+</body>
+</html>

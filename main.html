@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<link rel="stylesheet" type="text/css" href="css/animation.css">
+<link rel="stylesheet" type="text/css" href="css/sample.css">
+<title>Sample</title>
+<script type="text/javascript" src="lib/zepto.min.js"></script>
+</head>
+<body>
+<audio autoplay loop>
+  <source src="audio/lovers.mp3" type="audio/mpeg">
+  您的浏览器不支持 audio 元素。
+</audio> 
+
+<section id="page01" class="trans1">
+	<div class="photo trans ready anim">
+		<img class="ring trans ready anim" src="images/01_03.png">
+		<img class="head" src="images/png.jpg">
+		<img class="fly" src="images/01_02.png">
+	</div>
+	<div class="txt">
+		<p class="trans2 trans-delay1-5 ready anim">新郎：阿树　<span>❤</span>　新娘：小希</p>
+		<p class="marry trans2 trans-delay2 ready anim">我们结婚啦！</p>
+	</div>
+	<div class="footer">
+		<img alt="img" class="trans2 trans-delay3 ready anim" src="images/01_01.png">
+	</div>
+</section>
+
+<section id="page02" class="trans1 bottom">
+	<div class="header trans1 trans-delay1 ready anim"></div>
+	<img class="content trans1 trans-delay2 ready anim" src="images/lovers.png">
+	<div class="footer trans05 trans-delay3 ready anim"></div>
+	<div class="flower-up trans1 trans-delay2 ready anim"></div>
+	<div class="flower-down trans1 trans-delay2 ready anim"></div>
+	<div class="flower trans1 trans-delay4 ready anim">
+		<img src="images/01_01.png">
+	</div>
+</section>
+<section id="page03" class="trans1 bottom">
+	<div class="header trans1 trans-delay1 ready anim">
+		<img src="images/03_01.jpg">
+	</div>
+	<div class="content trans1 trans-delay2 ready anim">
+		<img src="images/02_03.png">
+		<p>真爱是一种颜色，一个名字</p>
+		<p class="txt trans1 trans-delay2-5 ready anim">一路走来，爱情终于在这一天修成了正果，在家人朋友的支持下，我们心里充满喜乐。对你，我承诺，不求爱你一万年，但求能给你一生的幸福。</p>
+	</div>
+	<div class="footer trans1 trans-delay3 ready anim"></div>
+	<div class="flower-center trans1 trans-delay3 ready anim"></div>
+	<div class="flower trans1 trans-delay3 ready anim">
+		<img src="images/01_01.png">
+	</div>
+</section>
+<section id="page04" class="trans1 bottom">
+	<div class="header trans1 trans-delay1 ready anim">
+		<img src="images/02_03.png">
+		<p class="tit trans1 trans-delay1-5 ready anim">真爱是一种颜色，一个名字</p>
+		<p class="txt trans1 trans-delay2 ready anim">一路走来，爱情终于在这一天修成了正果，在家人朋友的支持下，我们心里充满喜乐。对你，我承诺，不求爱你一万年，但求能给你一生的幸福。</p>
+	</div>
+	<div class="content trans1 trans-delay1 ready anim">
+		<img src="images/03_01.jpg">
+	</div>
+	<div class="footer trans1 trans-delay1 ready anim">
+		<img src="images/02_01.png">
+		<img class="flower" src="images/01_01.png">
+	</div>
+	<img class="flower-l trans1 trans-delay1 ready anim" src="images/02_02.png">
+	<img class="flower-r trans1 trans-delay1 ready anim" src="images/02_02.png">
+</section>
+<section id="page05" class="trans1 bottom">
+
+	<div class="content trans1 trans-delay1 ready anim">
+		<img src="images/03_01.jpg">
+	</div>
+	<div class="header trans1 trans-delay1 ready anim">
+		<img src="images/02_03.png">
+		<p class="tit trans1 trans-delay1-5 ready anim">真爱是一种颜色，一个名字</p>
+		<p class="txt trans1 trans-delay2 ready anim">一路走来，爱情终于在这一天修成了正果，在家人朋友的支持下，我们心里充满喜乐。对你，我承诺，不求爱你一万年，但求能给你一生的幸福。</p>
+	</div>
+	<div class="footer trans1 trans-delay1 ready anim">
+		<img src="images/02_01.png">
+		<img class="flower" src="images/01_01.png">
+	</div>
+	<img class="flower-l trans1 trans-delay1 ready anim" src="images/02_02.png">
+	<img class="flower-r trans1 trans-delay1 ready anim" src="images/02_02.png">
+</section>
+<section id="page06" class="trans1 bottom">
+	<div class="header trans2 trans-delay1 ready anim">
+		<p class="time trans1 trans-delay1 ready anim">12 : 00</p>
+		<p class="date trans1 trans-delay1 ready anim">2016年10月5日</p>
+		<img src="images/01_01.png" class="trans2 trans-delay1-5 ready anim">
+	</div>
+	<div class="footer">
+		<p class="trans1 trans-delay1-5 ready anim">Address</p>
+		<p class="trans1 trans-delay2 ready anim">安徽省宣城市宣州区</p>
+		<p class="trans1 trans-delay2-5 ready anim">杨柳镇高桥村冯西组13号</p>
+	</div>
+	<img class="flower" src="images/02_02.png">
+</section>
+<section id="page07" class="trans1 bottom">07</section>
+<section id="page08" class="trans1 bottom">08</section>
+<div id="btnPre" style="display:none;" onclick="prePage()"></div>
+<div id="btnNext" onclick="nextPage()"></div>
+<script type="text/javascript">
+var pages = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08'];
+var pageInit = [];
+
+var currentPageIndex = 0;
+
+var nextPage = function() {
+	$('#btnPre').show();
+	if (currentPageIndex === pages.length - 2) {
+		$('#btnNext').hide();
+	} else {
+		$('#btnNext').show();
+	}
+	if (currentPageIndex === pages.length - 1) return;
+	showPage($('#' + pages[currentPageIndex + 1]), 'fromBottom');
+};
+
+var prePage = function() {
+	$('#btnNext').show();
+	if (currentPageIndex === 1) {
+		$('#btnPre').hide();
+	} else {
+		$('#btnPre').show();
+	}
+	if (currentPageIndex === 0) return;
+	showPage($('#' + pages[currentPageIndex - 1]), 'fromUp');
+};
+
+var showPage = function(page, type) {
+	if (type === 'fromUp') {
+		$('#' + pages[currentPageIndex]).addClass('bottom');
+		page.removeClass('top');
+		currentPageIndex--;
+	} else if (type === 'fromBottom') {
+		$('#' + pages[currentPageIndex]).addClass('top');
+		page.removeClass('bottom');
+		currentPageIndex++;
+	}
+	pageInit[currentPageIndex]();
+};
+
+window.onload = function() {
+	pageInit.push(page01Start);
+	pageInit.push(page02Start);
+	pageInit.push(page03Start);
+	pageInit.push(page04Start);
+	pageInit.push(page05Start);
+	pageInit.push(page06Start);
+	pageInit.push(page07Start);
+	pageInit.push(page08Start);
+	pageInit[currentPageIndex]();
+	$('#btnPre').hide();
+};
+
+var page01Start = function() {
+	$('#page01 .anim').removeClass('ready');
+};
+var page02Start = function() {
+	$('#page02 .anim').removeClass('ready');
+};
+var page03Start = function() {
+	$('#page03 .anim').removeClass('ready');
+};
+var page04Start = function() {
+	$('#page04 .anim').removeClass('ready');
+};
+var page05Start = function() {
+	$('#page05 .anim').removeClass('ready');
+};
+var page06Start = function() {
+	$('#page06 .anim').removeClass('ready');
+};
+var page07Start = function() {
+	$('#page07 .anim').removeClass('ready');
+};
+var page08Start = function() {
+	$('#page08 .anim').removeClass('ready');
+};
+</script>
+</body>
+</html>
