@@ -1,20 +1,22 @@
 <?php
 require 'mongofactory.php';
 
-$url = 'mongodb://shizqiang:123456@127.0.0.1:27017';
-$db_name = 'test';
+$url = 'mongodb://114.113.155.22:27017';
+$db_name = 'shizqdb';
 $db = mongofactory::getInstance($url, $db_name);
 
 $request_type = $_GET['type'];
 
+$appid = 'wx40c3a549a1f9df06';
+$secret = '2b844fcf66c0e6bdfd608381f8f4c779';
+
 if ($request_type === 'token') {
-	$url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx40c3a549a1f9df06&secret=853703eba106c2f98243f612702c72bb';
+	$url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$secret;
 	$req = 'token';
 } else {
 	$url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' . $_GET['token'] . '&type=jsapi';
 	$req = 'ticket';
 }
-
 
 if (check_timeout($req)) {
 	echo get_from_server($url, $req);
@@ -26,7 +28,7 @@ if (check_timeout($req)) {
 function check_timeout($req) {
 	global $db;
 	$time = time();
-	$res = $db->wechat->find(['tag'=>$req]);
+	$res = $db->wechat->find(array('tag'=>$req));
 	if ($res->hasNext()) {
 		$res_info = $res->next();
 		$spend = $time - $res_info['save_time'];
@@ -45,12 +47,12 @@ function check_timeout($req) {
 function save_item($data, $req) {
 	global $db;
 	// 更新一个文档，如果指定的文档不存在，则插入新的
-	$db->wechat->update(['tag'=>$req], ['$set'=>['save_time'=>time(), 'val'=>$data]], ['upsert'=>true]);
+	$db->wechat->update(array('tag'=>$req), array('$set'=>array('save_time'=>time(), 'val'=>$data)), array('upsert'=>true));
 }
 
 function get_from_cache($req) {
 	global $db;
-	$res = $db->wechat->find(['tag'=>$req]);
+	$res = $db->wechat->find(array('tag'=>$req));
 	$res_info = $res->next();
 	return $res_info['val'];
 }

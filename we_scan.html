@@ -30,7 +30,7 @@ var getJsapiTicket = function(token) {
 			var jsapiTicket = obj.ticket;
 			getSignature(jsapiTicket);
 		} else {
-			alert('get ticket faild');
+			alert('Get ticket faild');
 		}
 	});
 };
@@ -56,7 +56,7 @@ var prepare = function(pack) {
 		$('#btnClick').html('Scan QRCode');
 	});
 	wx.error(function(err) {
-		alert('config faild');
+		alert('Config faild');
 	});
 };
 
@@ -64,6 +64,9 @@ var validateWechatJs = function() {
 	$.get('./curl_get_https.php?type=token', function(response){
 		var obj = JSON.parse(response); 
 		var token = obj.access_token;
+		if (typeof token === 'undefined') {
+			alert('Get token faild');
+		}
 		getJsapiTicket(token);
 	});
 };
